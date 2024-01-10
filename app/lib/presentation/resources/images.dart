@@ -5,6 +5,7 @@ part of 'resources.dart';
 /// **/
 enum Images {
   appLogo,
+  blackMarketLogo
 }
 
 extension LoadImage on Images {
@@ -15,6 +16,7 @@ extension LoadImage on Images {
 
   static final Map<Images, String> _imagesValues = {
     Images.appLogo: '$icResFolder/logo.png',
+    Images.blackMarketLogo: '$imagesResFolder/black_market_logo.png',
   };
 
   String get value => _imagesValues[this]!;

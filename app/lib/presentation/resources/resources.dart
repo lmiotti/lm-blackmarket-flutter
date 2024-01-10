@@ -6,6 +6,8 @@ part 'dim.dart';
 
 part 'images.dart';
 
+part 'color.dart';
+
 extension SpacingOnWidget on Widget {
   Spacing get spacing => Spacing();
 }

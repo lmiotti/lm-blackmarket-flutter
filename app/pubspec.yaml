@@ -63,6 +63,9 @@ flutter:
   generate: true
   uses-material-design: true
 
+  assets:
+    - assets/images/
+
   fonts:
     - family: Roboto Black
       fonts:

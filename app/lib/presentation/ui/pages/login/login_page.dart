@@ -1,6 +1,5 @@
 import 'package:app/main/init.dart';
 import 'package:app/presentation/themes/app_themes.dart';
-import 'package:app/presentation/themes/local_theme.dart';
 import 'package:app/presentation/ui/custom/box.dart';
 import 'package:app/presentation/ui/custom/form_field.dart';
 import 'package:app/presentation/ui/custom/label_button.dart';
@@ -19,10 +18,20 @@ const forgotPasswordButton = "I forgot my password";
 const noAccountText = "Don't have an account";
 const signupButton = "Sign up";
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   AuthService get _authService => getIt();
 
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  bool isFormValid = false;
+  String selectedEmail = "";
+  String selectedPassword = "";
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +52,35 @@ class LoginPage extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: spacing.l),
                       child: Image.asset(Images.blackMarketLogo.value),
                     ),
-                    const BMFormField(text: emailText, hint: emailHint,),
-                    const BMFormField(text: passwordText, hint: passwordHint,),
+                    BMFormField(
+                      text: emailText,
+                      hint: emailHint,
+                      onChanged: (value) {
+                        selectedEmail = value;
+                        validateFields();
+                      },
+                    ),
+                    BMFormField(
+                      text: passwordText,
+                      hint: passwordHint,
+                      isPasswordField: true,
+                      onChanged: (value) {
+                        selectedPassword = value;
+                        validateFields();
+                      },
+                    ),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: spacing.xxs),
-                      child: const ToggleStateButton(text: loginButton),
+                      child: ToggleStateButton(
+                        text: loginButton,
+                        isEnabled: isFormValid,
+                        onPressed: () {},
+                      ),
                     ),
-                    const LabelButton(text: forgotPasswordButton),
+                    LabelButton(
+                      text: forgotPasswordButton,
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ),
@@ -66,7 +97,14 @@ class LoginPage extends StatelessWidget {
                         color: LocalColor.black,
                       ),
                     ),
-                    const NoStateButton(text: signupButton),
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(vertical: spacing.xs),
+                      child: NoStateButton(
+                        text: signupButton,
+                        onPressed: () {},
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -74,5 +112,15 @@ class LoginPage extends StatelessWidget {
           ),
       ),
     );
+  }
+
+  void validateFields() {
+    setState(() {
+      final bool emailValid =
+      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          .hasMatch(selectedEmail);
+      final bool passwordValid = selectedPassword.length > 6;
+      isFormValid = emailValid && passwordValid;
+    });
   }
 }

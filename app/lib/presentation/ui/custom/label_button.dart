@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
 
 class LabelButton extends StatelessWidget {
-  const LabelButton({super.key, required this.text});
+  const LabelButton({super.key, required this.text, required this.onPressed});
 
   final String text;
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class LabelButton extends StatelessWidget {
           color: LocalColor.blue,
         ),
       ),
-      onPressed: () {},
+      onPressed: () { onPressed(); },
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:app/presentation/ui/custom/form_field.dart';
 import 'package:app/presentation/ui/custom/label_button.dart';
 import 'package:app/presentation/ui/custom/no_state_button.dart';
 import 'package:app/presentation/ui/custom/toggle_state_button.dart';
+import 'package:app/presentation/utils/constants.dart';
 import 'package:domain/services/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:app/presentation/resources/resources.dart';
@@ -116,10 +117,8 @@ class _LoginPageState extends State<LoginPage> {
 
   void validateFields() {
     setState(() {
-      final bool emailValid =
-      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(selectedEmail);
-      final bool passwordValid = selectedPassword.length > 6;
+      final bool emailValid = RegExp(AuthConstants.EMAIL_REGEX).hasMatch(selectedEmail);
+      final bool passwordValid = selectedPassword.length > AuthConstants.PASSWORD_MIN_LENGTH;
       isFormValid = emailValid && passwordValid;
     });
   }

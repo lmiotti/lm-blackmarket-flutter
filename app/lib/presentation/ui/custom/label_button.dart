@@ -20,7 +20,7 @@ class LabelButton extends StatelessWidget {
           color: LocalColor.blue,
         ),
       ),
-      onPressed: () { onPressed(); },
+      onPressed: onPressed(),
     );
   }
 }

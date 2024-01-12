@@ -24,7 +24,7 @@ class NoStateButton extends StatelessWidget {
           color: LocalColor.black,
         ),
       ),
-      onPressed: () { onPressed(); },
+      onPressed: onPressed(),
     );
   }
 }

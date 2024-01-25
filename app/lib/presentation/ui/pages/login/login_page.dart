@@ -1,4 +1,3 @@
-import 'package:app/main/init.dart';
 import 'package:app/presentation/themes/app_themes.dart';
 import 'package:app/presentation/ui/custom/box.dart';
 import 'package:app/presentation/ui/custom/form_field.dart';
@@ -6,9 +5,10 @@ import 'package:app/presentation/ui/custom/label_button.dart';
 import 'package:app/presentation/ui/custom/no_state_button.dart';
 import 'package:app/presentation/ui/custom/toggle_state_button.dart';
 import 'package:app/presentation/utils/constants.dart';
-import 'package:domain/services/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:app/presentation/resources/resources.dart';
+import 'package:go_router/go_router.dart';
+import 'package:app/presentation/navigation/routers.dart';
 
 const emailText = "Email";
 const emailHint = "Type your email or telephone";
@@ -20,7 +20,6 @@ const noAccountText = "Don't have an account";
 const signupButton = "Sign up";
 
 class LoginPage extends StatefulWidget {
-  AuthService get _authService => getIt();
 
   const LoginPage({Key? key}) : super(key: key);
 
@@ -29,6 +28,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  GoRouter get _goRouter => Routers.authRouter;
 
   bool isFormValid = false;
   String selectedEmail = "";
@@ -57,8 +57,10 @@ class _LoginPageState extends State<LoginPage> {
                       text: emailText,
                       hint: emailHint,
                       onChanged: (value) {
-                        selectedEmail = value;
-                        validateFields();
+                        setState(() {
+                          selectedEmail = value;
+                          validateFields();
+                        });
                       },
                     ),
                     BMFormField(
@@ -66,8 +68,10 @@ class _LoginPageState extends State<LoginPage> {
                       hint: passwordHint,
                       isPasswordField: true,
                       onChanged: (value) {
-                        selectedPassword = value;
-                        validateFields();
+                        setState(() {
+                          selectedPassword = value;
+                          validateFields();
+                        });
                       },
                     ),
                     Container(
@@ -103,7 +107,9 @@ class _LoginPageState extends State<LoginPage> {
                       margin: EdgeInsets.symmetric(vertical: spacing.xs),
                       child: NoStateButton(
                         text: signupButton,
-                        onPressed: () {},
+                        onPressed: () {
+                          _goRouter.push('/signUp');
+                        },
                       ),
                     ),
                   ],

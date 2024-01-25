@@ -46,7 +46,7 @@ class App extends StatelessWidget {
                       case AuthStateAuthenticated _:
                         _goRouter.go('/home');
                       case AuthStateUnauthenticated _:
-                        _goRouter.go('/signUp');
+                        _goRouter.go('/login');
                       case _:
                     }
                   }

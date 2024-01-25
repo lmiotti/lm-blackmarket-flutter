@@ -8,6 +8,9 @@ import 'package:app/presentation/ui/custom/toggle_state_button.dart';
 import 'package:app/presentation/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:app/presentation/themes/app_themes.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
+import 'package:app/presentation/navigation/routers.dart';
 
 const emailLabel = "Email";
 const emailHint = "Type your email";
@@ -31,6 +34,8 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+
+  GoRouter get _goRouter => Routers.authRouter;
 
   bool isFormValid = false;
   String selectedEmail = "";
@@ -60,16 +65,20 @@ class _SignUpPageState extends State<SignUpPage> {
                     text: emailLabel,
                     hint: emailHint,
                     onChanged: (value) {
-                      selectedEmail = value;
-                      validateFields();
+                      setState(() {
+                        selectedEmail = value;
+                        validateFields();
+                      });
                     },
                   ),
                   BMFormField(
                     text: fullNameLabel,
                     hint: fullNameHint,
                     onChanged: (value) {
-                      selectedFullName = value;
-                      validateFields();
+                      setState(() {
+                        selectedFullName = value;
+                        validateFields();
+                      });
                     },
                   ),
                   BMFormField(
@@ -101,14 +110,14 @@ class _SignUpPageState extends State<SignUpPage> {
                             text: dataPolicyText,
                             style: const TextStyle(color: Colors.blue),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () {},
+                              ..onTap = () { openBrowser(); },
                           ),
                           const TextSpan(text: andTheText),
                           TextSpan(
                             text: cookiesPolicyText,
                             style: const TextStyle(color: Colors.blue),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () {},
+                              ..onTap = () { openBrowser(); },
                           ),
                         ],
                       ),
@@ -126,7 +135,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             text: loginText,
                             style: const TextStyle(color: Colors.blue),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () {},
+                              ..onTap = () {
+                                _goRouter.pop();
+                              },
                           ),
                         ],
                       ),
@@ -148,5 +159,12 @@ class _SignUpPageState extends State<SignUpPage> {
       final bool isPasswordValid = selectedPassword.length > AuthConstants.PASSWORD_MIN_LENGTH;
       isFormValid = isEmailValid && isFullNameValid && isPasswordValid;
     });
+  }
+
+  void openBrowser() async {
+    final Uri url = Uri.parse('https://rootstrap.com');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

@@ -12,19 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 import 'package:app/presentation/navigation/routers.dart';
 
-const emailLabel = "Email";
-const emailHint = "Type your email";
-const fullNameLabel = "Full Name";
-const fullNameHint = "Type your full name";
-const passwordLabel = "Password";
-const passwordHint = "Type your password";
-const signupButton = "Sign up";
-const bySigningText = "By signing up, you accept the ";
-const dataPolicyText = "Data Policy ";
-const andTheText = "and the ";
-const cookiesPolicyText = "Cookies Policy.";
-const alreadyHaveAccountText = "Already have an account? ";
-const loginText = "Log in";
+import '../../../resources/locale/generated/l10n.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -62,8 +50,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Image.asset(Images.blackMarketLogo.value),
                   ),
                   BMFormField(
-                    text: emailLabel,
-                    hint: emailHint,
+                    text: S.of(context).emailLabel,
+                    hint: S.of(context).emailHint,
                     onChanged: (value) {
                       setState(() {
                         selectedEmail = value;
@@ -72,8 +60,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                   ),
                   BMFormField(
-                    text: fullNameLabel,
-                    hint: fullNameHint,
+                    text: S.of(context).fullNameLabel,
+                    hint: S.of(context).fullNameHint,
                     onChanged: (value) {
                       setState(() {
                         selectedFullName = value;
@@ -82,8 +70,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                   ),
                   BMFormField(
-                    text: passwordLabel,
-                    hint: passwordHint,
+                    text: S.of(context).passwordLabel,
+                    hint: S.of(context).passwordHint,
                     isPasswordField: true,
                     onChanged: (value) {
                       selectedPassword = value;
@@ -93,56 +81,53 @@ class _SignUpPageState extends State<SignUpPage> {
                   Container(
                     margin: EdgeInsets.symmetric(vertical: spacing.xxs),
                     child: ToggleStateButton(
-                      text: signupButton,
+                      text: S.of(context).signupButton,
                       isEnabled: isFormValid,
                       onPressed: () {},
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 15.0),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: TextStyle(color: Colors.black, fontSize: context.localTheme.bodyMFontSize,),
-                        children: [
-                          const TextSpan(text: bySigningText),
-                          TextSpan(
-                            text: dataPolicyText,
-                            style: const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () { openBrowser(); },
-                          ),
-                          const TextSpan(text: andTheText),
-                          TextSpan(
-                            text: cookiesPolicyText,
-                            style: const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () { openBrowser(); },
-                          ),
-                        ],
-                      ),
+                  const SizedBox(height: 15.0),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: TextStyle(color: Colors.black, fontSize: context.localTheme.bodyMFontSize,),
+                      children: [
+                        TextSpan(text: S.of(context).bySigningText),
+                        TextSpan(
+                          text: S.of(context).dataPolicyText,
+                          style: const TextStyle(color: Colors.blue),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () { openBrowser(); },
+                        ),
+                        TextSpan(text: S.of(context).andTheText),
+                        TextSpan(
+                          text: S.of(context).cookiesPolicyText,
+                          style: const TextStyle(color: Colors.blue),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () { openBrowser(); },
+                        ),
+                      ],
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 15.0),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: TextStyle(color: Colors.black, fontSize: context.localTheme.bodyMFontSize,),
-                        children: [
-                          const TextSpan(text: alreadyHaveAccountText),
-                          TextSpan(
-                            text: loginText,
-                            style: const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                _goRouter.pop();
-                              },
-                          ),
-                        ],
-                      ),
+                  const SizedBox(height: 30.0),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: TextStyle(color: Colors.black, fontSize: context.localTheme.bodyMFontSize,),
+                      children: [
+                        TextSpan(text: S.of(context).alreadyHaveAccountText),
+                        TextSpan(
+                          text: S.of(context).loginText,
+                          style: const TextStyle(color: Colors.blue),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              _goRouter.pop();
+                            },
+                        ),
+                      ],
                     ),
                   ),
+                  const SizedBox(height: 15.0),
                 ],
               ),
             ),

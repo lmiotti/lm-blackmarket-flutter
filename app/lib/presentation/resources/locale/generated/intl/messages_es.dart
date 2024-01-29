@@ -22,17 +22,36 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "alreadyHaveAccountText":
+            MessageLookupByLibrary.simpleMessage("Ya tienes una cuenta? "),
+        "andTheText": MessageLookupByLibrary.simpleMessage("y "),
         "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
+        "bySigningText": MessageLookupByLibrary.simpleMessage(
+            "Al registrarse ud está aceptando los"),
         "cookiesAcceptCTA": MessageLookupByLibrary.simpleMessage("Accept"),
         "cookiesBody": MessageLookupByLibrary.simpleMessage(
             "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services."),
+        "cookiesPolicyText":
+            MessageLookupByLibrary.simpleMessage("Condiciones."),
         "cookiesTitle":
             MessageLookupByLibrary.simpleMessage("This website uses cookies"),
+        "dataPolicyText": MessageLookupByLibrary.simpleMessage("Terminos "),
+        "emailHint": MessageLookupByLibrary.simpleMessage("Escriba su email"),
+        "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
+        "fullNameHint":
+            MessageLookupByLibrary.simpleMessage("Escriba su nombre completo"),
+        "fullNameLabel":
+            MessageLookupByLibrary.simpleMessage("Nombre completo"),
+        "loginText": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
+        "passwordHint":
+            MessageLookupByLibrary.simpleMessage("Escriba su contraseña"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("Contraseña"),
         "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
             MessageLookupByLibrary.simpleMessage(
                 "Please try again later, we are\nworking to fix the issue."),
         "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "signupButton": MessageLookupByLibrary.simpleMessage("Registrarse"),
         "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
             "Sorry we didn\'t find any product")
       };

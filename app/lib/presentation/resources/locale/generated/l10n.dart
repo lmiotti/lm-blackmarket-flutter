@@ -129,6 +129,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Email`
+  String get emailLabel {
+    return Intl.message(
+      'Email',
+      name: 'emailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type your email`
+  String get emailHint {
+    return Intl.message(
+      'Type your email',
+      name: 'emailHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullNameLabel {
+    return Intl.message(
+      'Full Name',
+      name: 'fullNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type your full name`
+  String get fullNameHint {
+    return Intl.message(
+      'Type your full name',
+      name: 'fullNameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordLabel {
+    return Intl.message(
+      'Password',
+      name: 'passwordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type your password`
+  String get passwordHint {
+    return Intl.message(
+      'Type your password',
+      name: 'passwordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get signupButton {
+    return Intl.message(
+      'Sign up',
+      name: 'signupButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By signing up, you accept the`
+  String get bySigningText {
+    return Intl.message(
+      'By signing up, you accept the',
+      name: 'bySigningText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data Policy `
+  String get dataPolicyText {
+    return Intl.message(
+      'Data Policy ',
+      name: 'dataPolicyText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `and the `
+  String get andTheText {
+    return Intl.message(
+      'and the ',
+      name: 'andTheText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cookies Policy.`
+  String get cookiesPolicyText {
+    return Intl.message(
+      'Cookies Policy.',
+      name: 'cookiesPolicyText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? `
+  String get alreadyHaveAccountText {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'alreadyHaveAccountText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log in`
+  String get loginText {
+    return Intl.message(
+      'Log in',
+      name: 'loginText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

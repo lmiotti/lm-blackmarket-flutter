@@ -6,5 +6,18 @@
   "noConnection": "No connection",
   "retry": "Retry",
   "pleaseTryAgainLaterWeArenworkingToFixTheIssue": "Please try again later, we are\nworking to fix the issue.",
-  "sorryWeDidntFindAnyProduct": "Sorry we didn't find any product"
+  "sorryWeDidntFindAnyProduct": "Sorry we didn't find any product",
+  "emailLabel": "Email",
+  "emailHint": "Type your email",
+  "fullNameLabel": "Full Name",
+  "fullNameHint": "Type your full name",
+  "passwordLabel": "Password",
+  "passwordHint": "Type your password",
+  "signupButton": "Sign up",
+  "bySigningText": "By signing up, you accept the",
+  "dataPolicyText": "Data Policy ",
+  "andTheText": "and the ",
+  "cookiesPolicyText": "Cookies Policy.",
+  "alreadyHaveAccountText": "Already have an account? ",
+  "loginText": "Log in"
 }

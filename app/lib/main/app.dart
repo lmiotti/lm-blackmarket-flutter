@@ -61,26 +61,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-/*
-        //** Use this if you want your app in iOs looks like iOs native app and no use Material
-        // take into account that some widgets needs to be changes i.e: CupertinoSliverNavigationBar
-        // usually to use cupertino widget just add the prefix Cupertino to the widget.
-        **//
-        getIt<AppPlatform>().isIOS
-            ? CupertinoApp.router(
-                theme: state.appTheme?.cupertinoThemeData ??
-                    Themes.light.getLocalTheme().cupertinoThemeData,
-                locale: appLang,
-                supportedLocales: LangExtensions.supportedLang,
-                localizationsDelegates: const [
-                  S.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                routerConfig: AuthState.loggedIn == state.authState
-                    ? Routers.mainRouter
-                    : Routers.onBoardingRouter(state.authState),
-              )
-            : */
